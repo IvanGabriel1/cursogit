@@ -1,0 +1,25 @@
+Segundo video:
+Nos posicionamos en la carpeta donde está el proyecto y con click derecho abrimos git bash.
+
+1)Git init (para trabajar git sobre esa carpeta)
+
+2)git status -s (Para ver las carpetas que tiene. Tienen ?? antes de cada archivo, significa que no estan siendo trabajadas en git)
+
+3)git add index.html (estamos adheriendo la carpeta index.html para que git haga el seguimiento. LLEVAMOS EL ARCHIVO DEL AREA DE TRABAJO
+AL ÁREA DE ENSAYO (staging area).
+ -----(Si ponemos git status -s vemos que ahora en ves de ?? index.html hay una A(verde) index.html) ------
+
+4) git commit -m "probando git" (pasa del área de ensayo al repertorio local.)
+
+ --- Si ahora ponemos el status -s el index ya no está. Pero si hacemos una modificacion en el HTML, y ponemos el status -s de nuevo
+     va a salir una M(roja) index.html  (esta M roja dice que fue modificada pero no adherida al area de ensayo)----
+ --- La adherimos con "git add index.html" y si ponemos git status -s Ahora sale la M verde. ---
+ --- Ahora la podemos pasar al repertorio local con git commit -m "le agregé 2 lineas"
+
+5) git log --oneline (con esto vemos cada "guardado" del repertorio local, con un codigo alfanumerico por cada guardado).
+
+6) git reset --hard ______ (Codigo alfanumerico ej: 912593a) (con esto el codigo del index.html es modificado en visual studio code
+   (o el que estemos usando) como estaba al guardar. Por eso es importante ponerle nombres que nos ayuden en commit -m "nombre")
+
+   --(Si ponemos git log --oneline no va a salir mas el guardado anterior)
+

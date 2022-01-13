@@ -1,0 +1,643 @@
+/**** Custom Properties ****/
+
+:root {
+  --first-color: #0f0;
+  --first-alpha75-color: rgba(79, 2, 76, 0.75);
+  --first-alpha50-color: rgba(79, 2, 76, 0.5);
+  --first-alpha25-color: rgba(79, 2, 76, 0.25);
+  --second-color: #00ffff;
+  --second-alpha75-color: rgba(0, 255, 255, 0.75);
+  --second-alpha25-color: rgba(0, 255, 255, 0.25);
+  --third-color: #faff00;
+  --third-alpha75-color: rgba(250, 255, 0, 0.75);
+  --third-alpha25-color: rgba(250, 255, 0, 0.25);
+  --link-color: #509ee3;
+  --title-color: #333333;
+  --text-color: #222222;
+  --white-color: #ffffff;
+  --gray-light-color: #d6d6d6;
+  --gray-color: #949292;
+  --gray-dark-color: #6b6b6b;
+  --black-color: #000000;
+  --white-alpha50-color: rgba(255, 255, 255, 0.5);
+  --black-alpha50-color: rgba(0, 0, 0, 0.5);
+  --font: "raleway", "sans-serif";
+  --max-width: 1200px;
+  --header-height: 4rem;
+  --box-shadow: 0.25rem 0.25rem 1rem rgba(58, 32, 32, 0.5);
+}
+/**** Reset ****/
+html {
+  box-sizing: border-box;
+  font-family: var(--font);
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  color: var(--text-color);
+}
+
+a {
+  color: var(--link-color);
+}
+
+a:hover {
+  opacity: 0.75;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+h3 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+h4 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+h5 {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+h6 {
+  margin: 0;
+  font-size: 0.7rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+p {
+  line-height: 1.6;
+}
+
+/**** Components ****/
+
+/**** Carousel ****/
+
+.testimonios-container {
+  margin-top: 4rem;
+}
+
+.testimonios-box {
+  background-image: linear-gradient(
+      var(--first-alpha50-color),
+      var(--first-alpha50-color)
+    ),
+    var(--hero-image);
+  width: 100vw;
+  height: 50vh;
+  background-size: cover;
+  position: relative;
+}
+
+.slides {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.testimonios-box label {
+  border: medium solid var(--gray-dark-color);
+  border-radius: 50%;
+  margin: 0 0.25rem;
+  display: inline-block;
+  width: 0.75rem;
+  height: 0.75rem;
+  cursor: pointer;
+}
+.testimonios-box input {
+  display: none;
+}
+
+.slide > img {
+  width: 100px;
+  height: 100px;
+  object-fit: fill;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  border-radius: 50%;
+}
+
+.slide > blockquote {
+  color: var(--second-color);
+  margin-left: 1rem;
+  margin-right: 2rem;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.slide > cite {
+  color: var(--second-color);
+  bottom: 1rem;
+}
+
+/**** Hero-Image ****/
+
+.hero-image {
+  background-image: var(--hero-image);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-image-opacity {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--black-alpha50-color);
+}
+
+.hero-image-title {
+  color: var(--white-color);
+  font-size: 7vw;
+}
+
+/**** Modal ****/
+
+.modal {
+  position: fixed;
+  z-index: 999;
+  top: auto;
+  bottom: calc(var(--header-height) + 1rem);
+  right: 5vw;
+  left: 5vw;
+  max-height: 90vh;
+  background-color: var(--second-color);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 1s;
+  border: medium solid var(--black-color);
+}
+
+/* flex-wrap: wrap:  los elementos se colocan en varias líneas si no caben en una sola línea 
+nowrap: No se van a ir para abajo, se van a quedar en una sola fila o columna. (Si tiene propiedades de alto y ancho las va a respetar si tienen el espacio adecuado.)
+*/
+
+/* Justify-content: Define la alineación de los elementos hijos, respecto del eje principal(main-axis) (que lo define flex-direction.)*/
+/* Align-items: funciona por cada linea que tengamos. Define la alineación de los hijos en el eje transversal (cross axis) dentro de cada linea */
+/*La propiedad align-content establece la manera en que se reparte el espacio sobrante en la dirección secundaria.*/
+
+/* center: los elementos se sitúan en el centro de la dirección secundaria, es decir, el espacio disponible se reparte entre el principio y el final */
+
+.modal-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  overflow: hidden;
+}
+
+.modal-close {
+  margin-right: 4px;
+  margin-top: 4px;
+  align-self: flex-end;
+}
+
+.modal-content > p {
+  margin: 1rem;
+  font-size: 13px;
+}
+
+.title-nosotros {
+  display: inline;
+}
+
+.text-nosotros {
+  display: inline;
+}
+
+.nosotros-container > article {
+  margin-bottom: 1rem;
+}
+
+.title-nosotros-modal {
+  color: var(--first-color);
+}
+
+.text-nosotros-big {
+  display: none;
+}
+
+.logo-modal {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.modal[id|="nos"]:target {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/**** Menu ****/
+.menu-btn {
+  padding: 0;
+  border: 0;
+  background-color: var(--first-color);
+  cursor: pointer;
+}
+
+.menu.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.menu {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  background-color: var(--first-color);
+  bottom: var(--header-height);
+  transition: opacity 0.5s ease;
+}
+
+.menu a {
+  padding: 1rem;
+  font-size: 1.5rem;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+  color: var(--second-color);
+}
+
+.menu a:hover {
+  background-color: var(--third-color);
+}
+
+@media screen and (min-width: 1024px) {
+  .menu-btn {
+    display: none;
+  }
+
+  .menu {
+    position: static;
+    flex-direction: row;
+    width: auto;
+    opacity: 1;
+    pointer-events: auto;
+    margin-right: 3rem;
+  }
+
+  .menu a {
+    padding: 0 1rem;
+  }
+
+  .menu a:last-child {
+    padding-right: 0;
+  }
+
+  .menu a:hover {
+    background-color: transparent;
+  }
+}
+
+/**** Utilities ****/
+
+.enlace {
+  color: var(--link-color);
+}
+.none {
+  display: none;
+}
+
+.section {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  color: var(--title-color);
+  border-top: medium solid var(--first-color);
+  border-bottom: medium solid var(--first-color);
+  margin: auto;
+  margin-bottom: 1rem;
+  max-width: 70vw;
+  text-align: center;
+}
+
+.text-clean {
+  text-decoration: none;
+}
+/**** Site Styles ****/
+
+/* Cards Servicios */
+
+.card-container {
+  border: thin solid black;
+  /* margin: (primer valor top y bottom) (segundo valor left y right); evitarlo, por que puede que se complique si queres un valor diferente entre top y bottom. o R y L.*/
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
+  width: 80vw;
+  height: 30vh;
+  max-width: 352px;
+  max-height: 192px;
+  position: relative;
+  cursor: pointer;
+  transition: transform 1s ease-in-out;
+  perspective: 10rem;
+  transform-style: preserve-3d;
+  box-shadow: var(--box-shadow);
+}
+
+.container-info-back {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 1rem;
+  border: thick solid white;
+  display: flex;
+  flex-direction: column;
+}
+
+.flip-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-face img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 0 50%;
+}
+
+.card-container:hover {
+  transform: rotateY(180deg);
+}
+
+.flip-front {
+  transform: rotateY(0deg);
+}
+
+.flip-back-1,
+.flip-back-2,
+.flip-back-3,
+.flip-back-4,
+.flip-back-5,
+.flip-back-6 {
+  transform: rotateY(180deg);
+}
+
+.flip-back-1 {
+  background-image: url(assets/Card\ Servicio\ 1.jpg);
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-position: center;
+  background-size: cover;
+}
+
+.flip-back-2 {
+  background-image: url(assets/Card\ Servicio\ 2.jpg);
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-position: center;
+  background-size: cover;
+}
+
+.flip-back-3 {
+  background-image: url(assets/Card\ Servicio\ 3.jpg);
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-position: center;
+  background-size: cover;
+}
+
+.flip-back-4 {
+  background-image: url(assets/Card\ Servicio\ 4.jpg);
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-position: center;
+  background-size: cover;
+}
+
+.flip-back-5 {
+  background-image: url(assets/Card\ Servicio\ 5.jpg);
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-position: center;
+  background-size: cover;
+}
+
+.flip-back-6 {
+  background-image: url(assets/Card\ Servicio\ 6.jpg);
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-position: center;
+  background-size: cover;
+}
+
+.flip-back-1:before,
+.flip-back-2:before,
+.flip-back-3:before,
+.flip-back-4:before,
+.flip-back-5:before,
+.flip-back-6:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--first-alpha75-color);
+}
+
+.text-flip-front {
+  position: absolute;
+  top: 1rem;
+  width: 100%;
+  text-align: center;
+  color: var(--second-color);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.text-flip-back,
+.text-promocion-flip-back,
+.text-trabajo-flip-back {
+  width: 100%;
+  height: 100%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  text-align: center;
+  color: var(--white-color);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.text-promocion-flip-back {
+  font-size: 11px;
+  width: 95%;
+  padding-bottom: 1rem;
+}
+
+/* Final Cards Servicios */
+
+.header {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 999;
+  padding: 1rem;
+  width: 100%;
+  background-color: var(--first-color);
+  height: var(--header-height);
+}
+
+.header > .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header svg {
+  height: 2rem;
+  width: 2rem;
+  background-color: var(--first-color);
+}
+
+.nosotros-container {
+  margin-left: 1rem;
+}
+
+.nosotros-container h3:first-child {
+  margin-top: 1rem;
+}
+
+.nosotros-container p {
+  margin: 0;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.title-nosotros {
+  color: var(--title-color);
+}
+
+@media screen and (min-width: 768px) {
+  .section-title {
+    max-width: 478px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .enlace-modal {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .title-nosotros {
+    display: block;
+    text-align: center;
+  }
+
+  .text-nosotros {
+    display: none;
+  }
+
+  .text-nosotros-big {
+    display: inline;
+  }
+
+  .nosotros-container {
+    margin-left: 10vw;
+    margin-right: 10vw;
+  }
+
+  .servicios-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 6rem;
+  }
+
+  .card-container {
+    margin-bottom: 5rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .header {
+    position: sticky;
+    top: 0;
+    padding: 0.5rem;
+    height: calc(var(--header-height) - 1rem);
+  }
+
+  .nosotros-container {
+    display: flex;
+    flex-direction: row;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    max-width: 1400px;
+  }
+
+  .nosotros-container article {
+    margin: 2rem;
+    text-align: center;
+    max-width: 28%;
+  }
+
+  .logo {
+    margin-left: 1rem;
+  }
+
+  .servicios-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1280px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .card-container {
+    width: 30vw;
+    max-width: 352px;
+    max-height: 192px;
+  }
+}
